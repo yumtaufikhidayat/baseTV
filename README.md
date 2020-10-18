@@ -28,7 +28,7 @@ This app built with these technologies:
 - RecyclerView
 - Pagination
 
-#### API (Application Interface)
+#### API (Application Programming Interface)
 - Source : https://www.episodate.com/api
 
 #### IDE (Integrated Development Environment)
