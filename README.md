@@ -1,5 +1,5 @@
-# baseTV
-baseTV is an Android TV show catalog app that let you get update of latest TV show.
+# Base TV
+Base TV is an Android TV show catalog app that let you get update of latest TV show.
 
 This app built with these technologies:
 ### Hardware
