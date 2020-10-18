@@ -41,3 +41,34 @@ This app built with these technolgies:
         - testImplementation 'junit:junit:4.13.1'
         - androidTestImplementation 'androidx.test.ext:junit:1.1.2'
         - androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+##### By Third Parties
+- Material design
+        - implementation 'com.google.android.material:material:1.2.1'
+
+- Network
+        - implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+        - implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+        - implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+        - implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+
+- Picasso
+        - implementation 'com.squareup.picasso:picasso:2.71828'
+
+- Lifecycle extensions
+        - implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+- Room & RxJava
+        - implementation 'androidx.room:room-runtime:2.2.5'
+        - annotationProcessor 'androidx.room:room-compiler:2.2.5'
+        - implementation 'androidx.room:room-rxjava2:2.2.5'
+
+- RxJava
+        - implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+- Scalable size units
+        - implementation 'com.intuit.sdp:sdp-android:1.0.6'
+        - implementation 'com.intuit.ssp:ssp-android:1.0.6'
+
+- Rounded image view
+        - implementation 'com.makeramen:roundedimageview:2.3.0'
