@@ -1,7 +1,7 @@
 # baseTV
-baseTV is Android TV show catalog that let you get update the latest TV show. This app is written in Java programming language.
+baseTV is an Android TV show catalog app that let you get update of latest TV show.
 
-This app built with these technolgies:
+This app built with these technologies:
 ### Hardware
 - CPU : Intel© Core™ i3-6006U CPU @ 2.0GHz
 - Memory : 2 x 4 GB RAM
@@ -16,6 +16,18 @@ This app built with these technolgies:
 #### Programming Language
 - Language Name : Java
 - Version : 11.0.8
+
+#### Components
+- MVVM Architecture
+- Retrofit
+- Lifecycle Extensions
+- Room persistent database
+- RxJava
+- Material Design
+- Data Binding
+
+#### API (Application Interface)
+- Source : https://www.episodate.com/api
 
 #### IDE (Integrated Development Environment)
 - IDE Name : Android Studio
