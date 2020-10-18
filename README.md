@@ -25,6 +25,8 @@ This app built with these technologies:
 - RxJava
 - Material Design
 - Data Binding
+- RecyclerView
+- Pagination
 
 #### API (Application Interface)
 - Source : https://www.episodate.com/api
