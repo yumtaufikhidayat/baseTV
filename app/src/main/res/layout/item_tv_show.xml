@@ -7,7 +7,7 @@
     <data>
         <variable
             name="tvShow"
-            type="com.yumtaufik.basetv.models.TVShowsItems" />
+            type="com.yumtaufik.basetv.models.home.TVShowsItems" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

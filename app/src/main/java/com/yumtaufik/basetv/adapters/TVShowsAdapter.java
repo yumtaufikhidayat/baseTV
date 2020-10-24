@@ -9,17 +9,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.yumtaufik.basetv.R;
 import com.yumtaufik.basetv.databinding.ItemTvShowBinding;
-import com.yumtaufik.basetv.models.TVShowsItems;
+import com.yumtaufik.basetv.listeners.TvShowsListener;
+import com.yumtaufik.basetv.models.home.TVShowsItems;
 
 import java.util.List;
 
 public class TVShowsAdapter extends RecyclerView.Adapter<TVShowsAdapter.TVShowsViewHolder> {
 
-    private List<TVShowsItems> tvShowsItemsList;
+    private final List<TVShowsItems> tvShowsItemsList;
     private LayoutInflater layoutInflater;
+    private final TvShowsListener tvShowsListener;
 
-    public TVShowsAdapter(List<TVShowsItems> tvShowsItemsList) {
+    public TVShowsAdapter(List<TVShowsItems> tvShowsItemsList, TvShowsListener tvShowsListener) {
         this.tvShowsItemsList = tvShowsItemsList;
+        this.tvShowsListener = tvShowsListener;
     }
 
     @NonNull
@@ -48,7 +51,7 @@ public class TVShowsAdapter extends RecyclerView.Adapter<TVShowsAdapter.TVShowsV
         return tvShowsItemsList.size();
     }
 
-    static class TVShowsViewHolder extends RecyclerView.ViewHolder {
+    class TVShowsViewHolder extends RecyclerView.ViewHolder {
 
         ItemTvShowBinding itemTvShowBinding;
 
@@ -60,6 +63,7 @@ public class TVShowsAdapter extends RecyclerView.Adapter<TVShowsAdapter.TVShowsV
         public void bindTVShows(TVShowsItems tvShowsItems) {
             itemTvShowBinding.setTvShow(tvShowsItems);
             itemTvShowBinding.executePendingBindings();
+            itemTvShowBinding.getRoot().setOnClickListener(view -> tvShowsListener.onTvShowClicked(tvShowsItems));
         }
     }
 }

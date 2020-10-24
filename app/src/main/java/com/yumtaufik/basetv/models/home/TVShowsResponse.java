@@ -1,4 +1,4 @@
-package com.yumtaufik.basetv.models;
+package com.yumtaufik.basetv.models.home;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

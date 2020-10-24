@@ -1,11 +1,11 @@
-package com.yumtaufik.basetv.repositories;
+package com.yumtaufik.basetv.repositories.home;
 
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.yumtaufik.basetv.models.TVShowsResponse;
+import com.yumtaufik.basetv.models.home.TVShowsResponse;
 import com.yumtaufik.basetv.network.ApiClient;
 import com.yumtaufik.basetv.network.ApiService;
 
