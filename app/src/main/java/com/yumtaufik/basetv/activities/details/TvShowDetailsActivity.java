@@ -21,6 +21,7 @@ import com.yumtaufik.basetv.models.home.TVShowsItems;
 import com.yumtaufik.basetv.viewmodels.details.TvShowDetailsViewModel;
 
 import java.util.List;
+import java.util.Locale;
 
 public class TvShowDetailsActivity extends AppCompatActivity {
 
@@ -65,13 +66,32 @@ public class TvShowDetailsActivity extends AppCompatActivity {
                     loadImageSlider(tvShowDetailsResponse.getTvShow().getPictures());
                 }
 
-                activityTvShowDetailsBinding.setTvShowImageUrl(tvShowDetailsResponse.getTvShow().getImagePath());
+                activityTvShowDetailsBinding.setImageUrl(tvShowDetailsResponse.getTvShow().getImagePath());
                 activityTvShowDetailsBinding.imgTvShow.setVisibility(View.VISIBLE);
 
                 activityTvShowDetailsBinding.setDescription(
                         String.valueOf(HtmlCompat.fromHtml(tvShowDetailsResponse.getTvShow().getDescription(), HtmlCompat.FROM_HTML_MODE_LEGACY))
                 );
                 activityTvShowDetailsBinding.tvShowDescription.setVisibility(View.VISIBLE);
+
+                activityTvShowDetailsBinding.setRating(
+                        String.format(
+                                Locale.getDefault()
+                                ,"%.2f"
+                                , Double.parseDouble(tvShowDetailsResponse.getTvShow().getRating()))
+                );
+
+                if (tvShowDetailsResponse.getTvShow().getGenres() != null) {
+                    activityTvShowDetailsBinding.setGenre(tvShowDetailsResponse.getTvShow().getGenres().get(0));
+                } else {
+                    activityTvShowDetailsBinding.setGenre("N/A");
+                }
+
+                activityTvShowDetailsBinding.setRuntime(tvShowDetailsResponse.getTvShow().getRuntime() + " min");
+
+                activityTvShowDetailsBinding.viewDivider1.setVisibility(View.VISIBLE);
+                activityTvShowDetailsBinding.llLayoutMisc.setVisibility(View.VISIBLE);
+                activityTvShowDetailsBinding.viewDivider2.setVisibility(View.VISIBLE);
 
                 loadBasicInfoTvShowDetails();
 
