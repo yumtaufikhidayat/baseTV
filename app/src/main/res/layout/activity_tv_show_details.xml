@@ -15,6 +15,23 @@
             name="tvShowImageUrl"
             type="String" />
 
+        <variable
+            name="tvShowName"
+            type="String" />
+        
+        <variable
+            name="networkCountry"
+            type="String"/>
+
+        
+        <variable
+            name="startedDate"
+            type="String" />
+        
+        <variable
+            name="status"
+            type="String" />
+        
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -78,6 +95,72 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sliderViewPager"
             app:riv_corner_radius="@dimen/_6sdp"/>
+
+        <TextView
+            android:id="@+id/tvShowName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/ubuntu_bold"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{tvShowName}"
+            android:textColor="@color/colorTextIcons"
+            android:textSize="@dimen/_14ssp"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@id/imgTvShow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sliderViewPager"/>
+
+        <TextView
+            android:id="@+id/tvShowNetworkCountry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/ubuntu_regular"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{networkCountry}"
+            android:textColor="@color/colorTextOther"
+            android:textSize="@dimen/_12ssp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/tvShowName"
+            app:layout_constraintEnd_toEndOf="@id/tvShowName"
+            app:layout_constraintTop_toBottomOf="@id/tvShowName"/>
+
+        <TextView
+            android:id="@+id/tvShowStarted"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/ubuntu_regular"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text='@{"Started on: " + startedDate}'
+            android:textColor="@color/colorTextSecondary"
+            android:textSize="@dimen/_12ssp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/tvShowNetworkCountry"
+            app:layout_constraintEnd_toEndOf="@id/tvShowNetworkCountry"
+            app:layout_constraintTop_toBottomOf="@id/tvShowNetworkCountry"/>
+
+        <TextView
+            android:id="@+id/tvShowStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/ubuntu_regular"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{status}"
+            android:textColor="@android:color/holo_green_light"
+            android:textSize="@dimen/_12ssp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/tvShowStarted"
+            app:layout_constraintEnd_toEndOf="@id/tvShowStarted"
+            app:layout_constraintTop_toBottomOf="@id/tvShowStarted"/>
 
         <ProgressBar
             android:layout_width="@dimen/_25sdp"

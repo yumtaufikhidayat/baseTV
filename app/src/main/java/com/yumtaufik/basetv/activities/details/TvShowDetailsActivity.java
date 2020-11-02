@@ -15,6 +15,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.yumtaufik.basetv.R;
 import com.yumtaufik.basetv.adapters.ImageSliderAdapter;
 import com.yumtaufik.basetv.databinding.ActivityTvShowDetailsBinding;
+import com.yumtaufik.basetv.models.home.TVShowsItems;
 import com.yumtaufik.basetv.viewmodels.details.TvShowDetailsViewModel;
 
 import java.util.List;
@@ -22,10 +23,12 @@ import java.util.List;
 public class TvShowDetailsActivity extends AppCompatActivity {
 
     public static final String KEY_DETAILS_ID = "com.yumtaufik.basetv.activities.details.KEY_DETAILS_ID";
-//    public static final String KEY_DETAILS_PARCELABLE = "com.yumtaufik.basetv.activities.details.KEY_DETAILS";
+    public static final String KEY_DETAILS_PARCELABLE = "com.yumtaufik.basetv.activities.details.KEY_DETAILS";
 
     private ActivityTvShowDetailsBinding activityTvShowDetailsBinding;
     private TvShowDetailsViewModel tvShowDetailsViewModel;
+
+    private TVShowsItems tvShowsItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class TvShowDetailsActivity extends AppCompatActivity {
 
     private void setInit() {
         tvShowDetailsViewModel = new ViewModelProvider(this).get(TvShowDetailsViewModel.class);
+        tvShowsItems = getIntent().getParcelableExtra(KEY_DETAILS_PARCELABLE);
     }
 
     private void setArrowBack() {
@@ -62,6 +66,8 @@ public class TvShowDetailsActivity extends AppCompatActivity {
 
                 activityTvShowDetailsBinding.setTvShowImageUrl(tvShowDetailsResponse.getTvShow().getImagePath());
                 activityTvShowDetailsBinding.imgTvShow.setVisibility(View.VISIBLE);
+
+                loadBasicInfoTvShowDetails();
             }
         });
     }
@@ -111,6 +117,24 @@ public class TvShowDetailsActivity extends AppCompatActivity {
             } else {
                 imageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.backround_slider_indicator_inactive));
             }
+        }
+    }
+
+    private void loadBasicInfoTvShowDetails() {
+
+        if (tvShowsItems != null) {
+
+            activityTvShowDetailsBinding.setTvShowName(tvShowsItems.getName());
+            activityTvShowDetailsBinding.tvShowName.setVisibility(View.VISIBLE);
+
+            activityTvShowDetailsBinding.setNetworkCountry(tvShowsItems.getNetwork() + " (" + tvShowsItems.getCountry() + ")");
+            activityTvShowDetailsBinding.tvShowNetworkCountry.setVisibility(View.VISIBLE);
+
+            activityTvShowDetailsBinding.setStartedDate(tvShowsItems.getStart_date());
+            activityTvShowDetailsBinding.tvShowStarted.setVisibility(View.VISIBLE);
+
+            activityTvShowDetailsBinding.setStatus(tvShowsItems.getStatus());
+            activityTvShowDetailsBinding.tvShowStatus.setVisibility(View.VISIBLE);
         }
     }
 }
