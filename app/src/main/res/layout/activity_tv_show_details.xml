@@ -103,6 +103,9 @@
                     android:contentDescription="@null"
                     android:padding="@dimen/_3sdp"
                     android:src="@drawable/ic_back"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:tint="@color/colorTextIcons"/>
