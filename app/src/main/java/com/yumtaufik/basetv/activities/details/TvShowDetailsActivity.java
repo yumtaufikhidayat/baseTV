@@ -34,11 +34,17 @@ public class TvShowDetailsActivity extends AppCompatActivity {
 
         setInit();
 
+        setArrowBack();
+
         getTvShowDetails();
     }
 
     private void setInit() {
         tvShowDetailsViewModel = new ViewModelProvider(this).get(TvShowDetailsViewModel.class);
+    }
+
+    private void setArrowBack() {
+        activityTvShowDetailsBinding.imgBack.setOnClickListener(view -> onBackPressed());
     }
 
     private void getTvShowDetails() {
@@ -53,6 +59,9 @@ public class TvShowDetailsActivity extends AppCompatActivity {
                 if (tvShowDetailsResponse.getTvShow().getPictures() != null) {
                     loadImageSlider(tvShowDetailsResponse.getTvShow().getPictures());
                 }
+
+                activityTvShowDetailsBinding.setTvShowImageUrl(tvShowDetailsResponse.getTvShow().getImagePath());
+                activityTvShowDetailsBinding.imgTvShow.setVisibility(View.VISIBLE);
             }
         });
     }
