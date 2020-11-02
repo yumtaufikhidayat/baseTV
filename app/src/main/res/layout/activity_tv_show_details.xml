@@ -31,6 +31,10 @@
         <variable
             name="status"
             type="String" />
+
+        <variable
+            name="description"
+            type="String" />
         
     </data>
 
@@ -129,6 +133,38 @@
             app:layout_constraintStart_toStartOf="@id/tvShowName"
             app:layout_constraintEnd_toEndOf="@id/tvShowName"
             app:layout_constraintTop_toBottomOf="@id/tvShowName"/>
+
+        <com.codesgood.views.JustifiedTextView
+            android:id="@+id/tvShowDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/ubuntu_regular"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="@dimen/_2sdp"
+            android:maxLines="4"
+            android:text="@{description}"
+            android:textColor="@color/colorTextIcons"
+            android:textSize="@dimen/_11sdp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/imgTvShow"/>
+        
+        <TextView
+            android:id="@+id/tvReadMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:fontFamily="@font/ubuntu_medium"
+            android:includeFontPadding="false"
+            android:text="@string/tvReadMore"
+            android:textColor="@color/colorPrimaryAccent"
+            android:textSize="@dimen/_12ssp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/tvShowDescription"
+            app:layout_constraintTop_toBottomOf="@id/tvShowDescription"/>
 
         <TextView
             android:id="@+id/tvShowStarted"

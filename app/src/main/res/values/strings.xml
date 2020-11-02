@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">BaseTV</string>
     <string name="tvBaseTvMostPopular">Base TV | Most Popular</string>
+    <string name="tvReadMore">Read More</string>
+    <string name="tvReadLess">Read Less</string>
 </resources>

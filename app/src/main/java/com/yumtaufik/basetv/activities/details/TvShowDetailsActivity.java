@@ -1,6 +1,7 @@
 package com.yumtaufik.basetv.activities.details;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -8,6 +9,7 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.text.HtmlCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
@@ -56,7 +58,6 @@ public class TvShowDetailsActivity extends AppCompatActivity {
         activityTvShowDetailsBinding.setIsLoading(true);
 
         String tvShowId = String.valueOf(getIntent().getIntExtra(KEY_DETAILS_ID, 0));
-//        TVShowsItems tvShowsItems = getIntent().getParcelableExtra(KEY_DETAILS_PARCELABLE);
         tvShowDetailsViewModel.getTvShowDetails(tvShowId).observe(this, tvShowDetailsResponse -> {
             activityTvShowDetailsBinding.setIsLoading(false);
             if (tvShowDetailsResponse.getTvShow() != null) {
@@ -67,7 +68,14 @@ public class TvShowDetailsActivity extends AppCompatActivity {
                 activityTvShowDetailsBinding.setTvShowImageUrl(tvShowDetailsResponse.getTvShow().getImagePath());
                 activityTvShowDetailsBinding.imgTvShow.setVisibility(View.VISIBLE);
 
+                activityTvShowDetailsBinding.setDescription(
+                        String.valueOf(HtmlCompat.fromHtml(tvShowDetailsResponse.getTvShow().getDescription(), HtmlCompat.FROM_HTML_MODE_LEGACY))
+                );
+                activityTvShowDetailsBinding.tvShowDescription.setVisibility(View.VISIBLE);
+
                 loadBasicInfoTvShowDetails();
+
+                setReadMore();
             }
         });
     }
@@ -136,5 +144,21 @@ public class TvShowDetailsActivity extends AppCompatActivity {
             activityTvShowDetailsBinding.setStatus(tvShowsItems.getStatus());
             activityTvShowDetailsBinding.tvShowStatus.setVisibility(View.VISIBLE);
         }
+    }
+
+    private void setReadMore() {
+
+        activityTvShowDetailsBinding.tvReadMore.setVisibility(View.VISIBLE);
+        activityTvShowDetailsBinding.tvReadMore.setOnClickListener(view->{
+            if (activityTvShowDetailsBinding.tvReadMore.getText().toString().equals("Read More")) {
+                activityTvShowDetailsBinding.tvShowDescription.setMaxLines(Integer.MAX_VALUE);
+                activityTvShowDetailsBinding.tvShowDescription.setEllipsize(null);
+                activityTvShowDetailsBinding.tvReadMore.setText(R.string.tvReadLess);
+            } else {
+                activityTvShowDetailsBinding.tvShowDescription.setMaxLines(4);
+                activityTvShowDetailsBinding.tvShowDescription.setEllipsize(TextUtils.TruncateAt.END);
+                activityTvShowDetailsBinding.tvReadMore.setText(R.string.tvReadMore);
+            }
+        });
     }
 }
