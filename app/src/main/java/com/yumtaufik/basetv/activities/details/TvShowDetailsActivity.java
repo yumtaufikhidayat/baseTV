@@ -1,5 +1,7 @@
 package com.yumtaufik.basetv.activities.details;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -93,6 +95,15 @@ public class TvShowDetailsActivity extends AppCompatActivity {
                 activityTvShowDetailsBinding.llLayoutMisc.setVisibility(View.VISIBLE);
                 activityTvShowDetailsBinding.viewDivider2.setVisibility(View.VISIBLE);
 
+                activityTvShowDetailsBinding.btnWebsite.setOnClickListener(view -> {
+                    Intent intentWebsite = new Intent(Intent.ACTION_VIEW);
+                    intentWebsite.setData(Uri.parse(tvShowDetailsResponse.getTvShow().getUrl()));
+                    startActivity(intentWebsite);
+                });
+                activityTvShowDetailsBinding.btnWebsite.setVisibility(View.VISIBLE);
+
+                activityTvShowDetailsBinding.btnEpisodes.setVisibility(View.VISIBLE);
+
                 loadBasicInfoTvShowDetails();
 
                 setReadMore();
@@ -169,7 +180,7 @@ public class TvShowDetailsActivity extends AppCompatActivity {
     private void setReadMore() {
 
         activityTvShowDetailsBinding.tvReadMore.setVisibility(View.VISIBLE);
-        activityTvShowDetailsBinding.tvReadMore.setOnClickListener(view->{
+        activityTvShowDetailsBinding.tvReadMore.setOnClickListener(view -> {
             if (activityTvShowDetailsBinding.tvReadMore.getText().toString().equals("Read More")) {
                 activityTvShowDetailsBinding.tvShowDescription.setMaxLines(Integer.MAX_VALUE);
                 activityTvShowDetailsBinding.tvShowDescription.setEllipsize(null);
