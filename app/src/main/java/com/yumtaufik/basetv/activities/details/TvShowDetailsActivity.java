@@ -71,6 +71,23 @@ public class TvShowDetailsActivity extends AppCompatActivity {
                 activityTvShowDetailsBinding.setImageUrl(tvShowDetailsResponse.getTvShow().getImagePath());
                 activityTvShowDetailsBinding.imgTvShow.setVisibility(View.VISIBLE);
 
+                activityTvShowDetailsBinding.imgShare.setOnClickListener(view -> {
+
+                    try {
+
+                        String url = tvShowDetailsResponse.getTvShow().getUrl();
+                        String body = "Visit this awesome TV Shows " + "\n" + url;
+
+                        Intent intentShare = new Intent(Intent.ACTION_SEND);
+                        intentShare.setType("text/plain");
+                        intentShare.putExtra(Intent.EXTRA_TEXT, body);
+                        startActivity(Intent.createChooser(intentShare, "Share with:"));
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+
                 activityTvShowDetailsBinding.setDescription(
                         String.valueOf(HtmlCompat.fromHtml(tvShowDetailsResponse.getTvShow().getDescription(), HtmlCompat.FROM_HTML_MODE_LEGACY))
                 );

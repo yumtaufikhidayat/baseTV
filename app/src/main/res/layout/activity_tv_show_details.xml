@@ -110,6 +110,23 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:tint="@color/colorTextIcons"/>
 
+                <ImageView
+                    android:id="@+id/imgShare"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/background_back_button"
+                    android:contentDescription="@null"
+                    android:padding="@dimen/_3sdp"
+                    android:src="@drawable/ic_share"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/colorTextIcons"/>
+
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/imgTvShow"
                     android:layout_width="@dimen/_100sdp"
