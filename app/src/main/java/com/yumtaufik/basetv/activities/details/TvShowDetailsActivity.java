@@ -142,9 +142,7 @@ public class TvShowDetailsActivity extends AppCompatActivity {
                         bottomSheetLayoutEpisodesBinding.rvEpisodes.setAdapter(new EpisodesAdapter(tvShowDetailsResponse.getTvShow().getEpisodes()));
                         bottomSheetLayoutEpisodesBinding.tvEpisodesTitle.setText(String.format("Episodes | %s", tvShowsItems.getName()));
 
-                        bottomSheetLayoutEpisodesBinding.imgClose.setOnClickListener(v -> {
-                            bottomSheetDialogEpisodes.dismiss();
-                        });
+                        bottomSheetLayoutEpisodesBinding.imgClose.setOnClickListener(v -> bottomSheetDialogEpisodes.dismiss());
                     }
 
                     FrameLayout frameLayout = bottomSheetDialogEpisodes.findViewById(com.google.android.material.R.id.design_bottom_sheet);
