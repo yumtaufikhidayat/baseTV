@@ -1,11 +1,14 @@
 package com.yumtaufik.basetv.activities.details;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -16,9 +19,13 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.yumtaufik.basetv.R;
+import com.yumtaufik.basetv.adapters.EpisodesAdapter;
 import com.yumtaufik.basetv.adapters.ImageSliderAdapter;
 import com.yumtaufik.basetv.databinding.ActivityTvShowDetailsBinding;
+import com.yumtaufik.basetv.databinding.BottomSheetLayoutEpisodesBinding;
 import com.yumtaufik.basetv.models.home.TVShowsItems;
 import com.yumtaufik.basetv.viewmodels.details.TvShowDetailsViewModel;
 
@@ -32,6 +39,8 @@ public class TvShowDetailsActivity extends AppCompatActivity {
 
     private ActivityTvShowDetailsBinding activityTvShowDetailsBinding;
     private TvShowDetailsViewModel tvShowDetailsViewModel;
+    private BottomSheetDialog bottomSheetDialogEpisodes;
+    private BottomSheetLayoutEpisodesBinding bottomSheetLayoutEpisodesBinding;
 
     private TVShowsItems tvShowsItems;
 
@@ -120,6 +129,33 @@ public class TvShowDetailsActivity extends AppCompatActivity {
                 activityTvShowDetailsBinding.btnWebsite.setVisibility(View.VISIBLE);
 
                 activityTvShowDetailsBinding.btnEpisodes.setVisibility(View.VISIBLE);
+                activityTvShowDetailsBinding.btnEpisodes.setOnClickListener(view -> {
+                    if (bottomSheetDialogEpisodes == null) {
+                        bottomSheetDialogEpisodes = new BottomSheetDialog(this);
+                        bottomSheetLayoutEpisodesBinding = DataBindingUtil.inflate(
+                                LayoutInflater.from(this)
+                                , R.layout.bottom_sheet_layout_episodes
+                                , findViewById(R.id.llEpisodesContainer)
+                                , false
+                        );
+                        bottomSheetDialogEpisodes.setContentView(bottomSheetLayoutEpisodesBinding.getRoot());
+                        bottomSheetLayoutEpisodesBinding.rvEpisodes.setAdapter(new EpisodesAdapter(tvShowDetailsResponse.getTvShow().getEpisodes()));
+                        bottomSheetLayoutEpisodesBinding.tvEpisodesTitle.setText(String.format("Episodes | %s", tvShowsItems.getName()));
+
+                        bottomSheetLayoutEpisodesBinding.imgClose.setOnClickListener(v -> {
+                            bottomSheetDialogEpisodes.dismiss();
+                        });
+                    }
+
+                    FrameLayout frameLayout = bottomSheetDialogEpisodes.findViewById(com.google.android.material.R.id.design_bottom_sheet);
+                    if (frameLayout != null) {
+                        BottomSheetBehavior<View> bottomSheetBehavior = BottomSheetBehavior.from(frameLayout);
+                        bottomSheetBehavior.setPeekHeight(Resources.getSystem().getDisplayMetrics().heightPixels);
+                        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                    }
+
+                    bottomSheetDialogEpisodes.show();
+                });
 
                 loadBasicInfoTvShowDetails();
 
