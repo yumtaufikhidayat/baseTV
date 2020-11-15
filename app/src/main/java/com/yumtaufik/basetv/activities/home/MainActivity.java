@@ -86,7 +86,6 @@ public class MainActivity extends AppCompatActivity implements TvShowsListener {
     public void onTvShowClicked(TVShowsItems tvShowsItems) {
 
         Intent intent = new Intent(this, TvShowDetailsActivity.class);
-        intent.putExtra(TvShowDetailsActivity.KEY_DETAILS_ID, tvShowsItems.getId());
         intent.putExtra(TvShowDetailsActivity.KEY_DETAILS_PARCELABLE, tvShowsItems);
         startActivity(intent);
     }

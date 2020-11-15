@@ -34,7 +34,6 @@ import java.util.Locale;
 
 public class TvShowDetailsActivity extends AppCompatActivity {
 
-    public static final String KEY_DETAILS_ID = "com.yumtaufik.basetv.activities.details.KEY_DETAILS_ID";
     public static final String KEY_DETAILS_PARCELABLE = "com.yumtaufik.basetv.activities.details.KEY_DETAILS";
 
     private ActivityTvShowDetailsBinding activityTvShowDetailsBinding;
@@ -69,7 +68,7 @@ public class TvShowDetailsActivity extends AppCompatActivity {
 
         activityTvShowDetailsBinding.setIsLoading(true);
 
-        String tvShowId = String.valueOf(getIntent().getIntExtra(KEY_DETAILS_ID, 0));
+        String tvShowId = String.valueOf(tvShowsItems.getId());
         tvShowDetailsViewModel.getTvShowDetails(tvShowId).observe(this, tvShowDetailsResponse -> {
             activityTvShowDetailsBinding.setIsLoading(false);
             if (tvShowDetailsResponse.getTvShow() != null) {
