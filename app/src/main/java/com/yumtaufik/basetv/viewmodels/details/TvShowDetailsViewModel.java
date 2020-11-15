@@ -1,16 +1,34 @@
 package com.yumtaufik.basetv.viewmodels.details;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModel;
+import android.app.Application;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+
+import com.yumtaufik.basetv.database.TvShowDatabase;
 import com.yumtaufik.basetv.models.details.TvShowDetailsResponse;
+import com.yumtaufik.basetv.models.home.TVShowsItems;
 import com.yumtaufik.basetv.repositories.details.TVShowDetailsRepository;
 
-public class TvShowDetailsViewModel extends ViewModel {
+import io.reactivex.Completable;
 
-    private final TVShowDetailsRepository tvShowDetailsRepository = new TVShowDetailsRepository();
+public class TvShowDetailsViewModel extends AndroidViewModel {
+
+    private final TVShowDetailsRepository tvShowDetailsRepository;
+    private final TvShowDatabase tvShowDatabase;
+
+    public TvShowDetailsViewModel(@NonNull Application application) {
+        super(application);
+        tvShowDetailsRepository = new TVShowDetailsRepository();
+        tvShowDatabase = TvShowDatabase.getTvShowDatabase(application);
+    }
 
     public LiveData<TvShowDetailsResponse> getTvShowDetails(String tvShowId) {
         return tvShowDetailsRepository.getTvShowDetail(tvShowId);
+    }
+
+    public Completable addToWatchList(TVShowsItems tvShowsItems) {
+        return tvShowDatabase.tvShowDao().addToWatchList(tvShowsItems);
     }
 }

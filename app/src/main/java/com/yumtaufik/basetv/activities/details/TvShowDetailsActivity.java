@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -31,6 +32,10 @@ import com.yumtaufik.basetv.viewmodels.details.TvShowDetailsViewModel;
 
 import java.util.List;
 import java.util.Locale;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class TvShowDetailsActivity extends AppCompatActivity {
 
@@ -153,6 +158,16 @@ public class TvShowDetailsActivity extends AppCompatActivity {
 
                     bottomSheetDialogEpisodes.show();
                 });
+
+                activityTvShowDetailsBinding.imgWatchlist.setOnClickListener(v ->
+                        new CompositeDisposable().add(tvShowDetailsViewModel.addToWatchList(tvShowsItems)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(() -> {
+                            activityTvShowDetailsBinding.imgWatchlist.setImageResource(R.drawable.ic_added);
+                            Toast.makeText(this, R.string.tvAddedToWatchList, Toast.LENGTH_SHORT).show();
+                        })));
+                activityTvShowDetailsBinding.imgWatchlist.setVisibility(View.VISIBLE);
 
                 loadBasicInfoTvShowDetails();
 
