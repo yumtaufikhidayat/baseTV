@@ -5,6 +5,7 @@
     <string name="tvReadLess">Read Less</string>
     <string name="tvBullet">\u2022</string>
     <string name="tvAddedToWatchList">Added to watch list</string>
+    <string name="tvWatchList">Watch List</string>
 
     <!--Button-->
     <string name="btnWebsite">Website</string>

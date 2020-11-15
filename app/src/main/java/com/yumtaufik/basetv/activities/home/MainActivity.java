@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.yumtaufik.basetv.R;
 import com.yumtaufik.basetv.activities.details.TvShowDetailsActivity;
+import com.yumtaufik.basetv.activities.watchlist.WatchListActivity;
 import com.yumtaufik.basetv.adapters.TVShowsAdapter;
 import com.yumtaufik.basetv.databinding.ActivityMainBinding;
 import com.yumtaufik.basetv.listeners.TvShowsListener;
@@ -56,6 +57,9 @@ public class MainActivity extends AppCompatActivity implements TvShowsListener {
                     }
                 }
             }
+        });
+        activityMainBinding.imageWatchlist.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, WatchListActivity.class));
         });
     }
 
