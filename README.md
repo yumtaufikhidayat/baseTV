@@ -73,6 +73,7 @@ This app built with these technologies:
         - implementation 'com.squareup.picasso:picasso:2.71828'
 
 - Lifecycle extensions
+
         - implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
 - Room & RxJava
