@@ -7,6 +7,7 @@
     <string name="tvAddedToWatchList">Added to watch list</string>
     <string name="tvRemovedFromWatchList">Removed from watch list</string>
     <string name="tvWatchList">Watch List</string>
+    <string name="tvSearchHint">Search TV Show</string>
 
     <!--Button-->
     <string name="btnWebsite">Website</string>

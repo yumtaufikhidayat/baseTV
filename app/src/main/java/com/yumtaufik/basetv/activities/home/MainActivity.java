@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.yumtaufik.basetv.R;
 import com.yumtaufik.basetv.activities.details.TvShowDetailsActivity;
+import com.yumtaufik.basetv.activities.search.SearchActivity;
 import com.yumtaufik.basetv.activities.watchlist.WatchListActivity;
 import com.yumtaufik.basetv.adapters.TVShowsAdapter;
 import com.yumtaufik.basetv.databinding.ActivityMainBinding;
@@ -58,9 +59,13 @@ public class MainActivity extends AppCompatActivity implements TvShowsListener {
                 }
             }
         });
-        activityMainBinding.imageWatchlist.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, WatchListActivity.class));
-        });
+        activityMainBinding.imageWatchlist.setOnClickListener(v ->
+                startActivity(new Intent(MainActivity.this, WatchListActivity.class))
+        );
+
+        activityMainBinding.imageSearch.setOnClickListener(v ->
+                startActivity(new Intent(MainActivity.this, SearchActivity.class))
+        );
     }
 
     private void getMostPopularTVShows() {
