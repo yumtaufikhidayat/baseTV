@@ -12,6 +12,7 @@ import com.yumtaufik.basetv.models.home.TVShowsItems;
 import com.yumtaufik.basetv.repositories.details.TVShowDetailsRepository;
 
 import io.reactivex.Completable;
+import io.reactivex.Flowable;
 
 public class TvShowDetailsViewModel extends AndroidViewModel {
 
@@ -30,5 +31,13 @@ public class TvShowDetailsViewModel extends AndroidViewModel {
 
     public Completable addToWatchList(TVShowsItems tvShowsItems) {
         return tvShowDatabase.tvShowDao().addToWatchList(tvShowsItems);
+    }
+
+    public Flowable<TVShowsItems> getTVShowFromWatchList(String tvShowId) {
+        return tvShowDatabase.tvShowDao().getTVShowFromWatchList(tvShowId);
+    }
+
+    public Completable removeTVShowFromWatchList(TVShowsItems tvShowsItems) {
+        return tvShowDatabase.tvShowDao().removeFromWatchList(tvShowsItems);
     }
 }

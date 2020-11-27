@@ -10,6 +10,7 @@ import com.yumtaufik.basetv.models.home.TVShowsItems;
 
 import java.util.List;
 
+import io.reactivex.Completable;
 import io.reactivex.Flowable;
 
 public class WatchListViewModel extends AndroidViewModel {
@@ -24,5 +25,9 @@ public class WatchListViewModel extends AndroidViewModel {
 
     public Flowable<List<TVShowsItems>> loadWatchList() {
         return tvShowDatabase.tvShowDao().getWatchList();
+    }
+
+    public Completable removeTVShowFromWatchList(TVShowsItems tvShowsItems) {
+        return tvShowDatabase.tvShowDao().removeFromWatchList(tvShowsItems);
     }
 }
